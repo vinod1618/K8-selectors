@@ -14,7 +14,7 @@ spec:
             operator: NotIn
             values:
             - us-east-1d
-            - us-east-1a
+            #- us-east-1a
 
       # preferredDuringSchedulingIgnoredDuringExecution:  # this is soft rule
       # - weight: 100
