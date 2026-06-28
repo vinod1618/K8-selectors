@@ -23,7 +23,7 @@ spec:
           - key: project
             operator: In
             values:
-            - roboshop
+            - roboshopp
 
       - weight: 10
         preference:
