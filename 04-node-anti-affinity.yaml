@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-anti-affinity
+  labels:
+    env: test
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:   # this is hard rule
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: topology.kubernetes.io/zone
+            operator: NotIn
+            values:
+            - us-east-1d
+
+      # preferredDuringSchedulingIgnoredDuringExecution:  # this is soft rule
+      # - weight: 100
+      #   preference:
+      #     matchExpressions:
+      #     - key: project
+      #       operator: In
+      #       values:
+      #       - roboshop
+      # # anti affinity
+      # - weight: 10
+      #   preference:
+      #     matchExpressions:
+      #     - key: project
+      #       operator: NotIn
+      #       values:
+      #       - amazon
+  containers:
+  - name: nginx
+    image: nginx
