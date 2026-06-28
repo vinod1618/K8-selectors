@@ -10,6 +10,6 @@ spec:
     image: nginx
   tolerations:
   - key: "project"
-    operator: "equal"
+    operator: "Equal"
     value: "roboshop"
     effect: "NoSchedule"
